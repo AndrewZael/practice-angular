@@ -1,0 +1,58 @@
+<label>
+  Name:
+  <input type="text" [formControl]="name" />
+</label>
+
+<p>
+    value: {{name.value}}
+</p>
+
+<p>
+    <button (click)="updateName()">Update Name</button>
+</p>
+
+<!-- FORM Group -->
+
+<form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+    <div>
+        <label>
+        <input type="text" formControlName="firstName" placeholder="firstName" />
+    </label>
+        <br><br>
+        <label>
+        <input type="text" formControlName="lastName" placeholder="lastName" required />
+    </label>
+    </div>
+    <div formGroupName="address">
+        <h2>
+            <p>Address</p>
+        </h2>
+        <label>
+        <input type="text" formControlName="street" placeholder="street" required />
+    </label>
+        <br><br>
+        <label>
+        <input type="text" formControlName="city" placeholder="city" required />
+    </label>
+        <br><br>
+        <label>
+        <input type="text" formControlName="state" placeholder="state" required />
+    </label>
+
+    </div>
+    <div formArrayName="aliases">
+        <h3>Aliases</h3> <button (click)="addAlias()">Add Alias</button>
+
+        <div *ngFor="let address of aliases.controls; let i=index">
+            <!-- The repeated alias template -->
+            <label>
+            Alias:
+            <input type="text" [formControlName]="i">
+          </label>
+        </div>
+    </div>
+    <label>
+      <br><br>
+      <button type="submit" [disabled]="!profileForm.valid">Send</button>
+    </label>
+</form>

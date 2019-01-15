@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'">
+    <p>Box Animate!!! {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
+
+<button (click)="isOpen = !isOpen">Change</button>
