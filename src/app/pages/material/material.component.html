@@ -1,0 +1,12 @@
+<form class="example-form" (ngSubmit)="onSubmit($event)">
+    <mat-form-field class="example-full-width">
+        <input type="text" [placeholder]="namePlace" aria-label="Number" matInput [formControl]="nameCrtl" [matAutocomplete]="auto" required>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filterd | async" [value]="option.name">
+                <img class="example-option-img" aria-hidden [src]="option.img" [alt]="option.name" [title]="option.name" height="25" />
+                <span style="margin-left: 5px;">{{option.name}}</span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <button type="submit">Enviar</button>
+</form>
